@@ -1,0 +1,65 @@
+:root {
+  --vinshop-radius: 8px;
+  --vinshop-accent: #0f766e;
+  --vinshop-soft: #eef7f5;
+}
+
+.watermark {
+  display: none !important;
+}
+
+[data-testid="chat-input"] textarea {
+  border-radius: var(--vinshop-radius) !important;
+}
+
+[data-testid="message-content"] {
+  line-height: 1.5;
+  font-size: 0.98rem;
+  max-width: 76ch;
+}
+
+[data-testid="message-content"] code {
+  border-radius: 6px;
+  padding: 0.1rem 0.32rem;
+}
+
+[data-testid="message-content"] hr {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: 0.8rem 0;
+}
+
+[data-testid="message-content"] strong {
+  color: var(--vinshop-accent);
+}
+
+[data-testid="message-content"] ul {
+  margin-top: 0.35rem;
+}
+
+[data-testid="message-content"] li {
+  margin: 0.2rem 0;
+}
+
+[data-testid="message-content"] details {
+  border: 1px solid var(--border);
+  border-radius: var(--vinshop-radius);
+  margin-top: 0.75rem;
+  padding: 0.75rem 0.9rem;
+  background: color-mix(in srgb, var(--card) 88%, var(--muted));
+}
+
+[data-testid="message-content"] summary {
+  cursor: pointer;
+  font-weight: 650;
+}
+
+[data-testid="message-content"] pre {
+  border-radius: var(--vinshop-radius);
+  overflow: auto;
+}
+
+[data-testid="message-content"] img {
+  border-radius: var(--vinshop-radius);
+  border: 1px solid var(--border);
+}

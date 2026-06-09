@@ -1,4 +1,8 @@
 chromadb>=1.0.12
+aiosqlite>=0.20.0
+chainlit>=2.7.0
+SQLAlchemy>=2.0.0
+greenlet>=3.0.0
 langchain>=0.3.27
 langchain-core>=0.3.72
 langchain-google-genai>=2.1.8

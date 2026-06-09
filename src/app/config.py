@@ -55,9 +55,9 @@ class Settings:
                 "sentence-transformers/all-MiniLM-L6-v2",
             ),
             top_k=int(os.getenv("RAG_TOP_K", "4")),
-            google_api_key=os.getenv("GOOGLE_API_KEY"),
-            openai_api_key=os.getenv("OPENAI_API_KEY"),
-            openrouter_api_key=os.getenv("OPENROUTER_API_KEY"),
+            google_api_key=_clean_secret(os.getenv("GOOGLE_API_KEY")),
+            openai_api_key=_clean_secret(os.getenv("OPENAI_API_KEY")),
+            openrouter_api_key=_clean_secret(os.getenv("OPENROUTER_API_KEY")),
             openrouter_base_url=os.getenv(
                 "OPENROUTER_BASE_URL",
                 "https://openrouter.ai/api/v1",
@@ -66,7 +66,7 @@ class Settings:
             openrouter_app_name=os.getenv("OPENROUTER_APP_NAME"),
             ollama_base_url=os.getenv("OLLAMA_BASE_URL", "http://localhost:11434"),
             custom_llm_base_url=os.getenv("CUSTOM_LLM_BASE_URL"),
-            custom_llm_api_key=os.getenv("CUSTOM_LLM_API_KEY"),
+            custom_llm_api_key=_clean_secret(os.getenv("CUSTOM_LLM_API_KEY")),
             custom_llm_model=os.getenv("CUSTOM_LLM_MODEL"),
         )
 
@@ -78,3 +78,12 @@ def _infer_provider(model: str) -> str:
     if normalized.startswith("gpt") or normalized.startswith("o1") or normalized.startswith("o3"):
         return "openai"
     return "custom"
+
+
+def _clean_secret(value: str | None) -> str | None:
+    if not value:
+        return None
+    stripped = value.strip()
+    if stripped in {"your_key_here", "your-api-key", "changeme"}:
+        return None
+    return stripped
